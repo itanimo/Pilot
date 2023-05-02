@@ -1,18 +1,20 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("dataset.csv")
+# Read the CSV file
+data = pd.read_csv('dataset.csv')
 
-data.drop_duplicates(inplace=True)
-data.dropna(inplace=True)
+# Calculate the average income and order amount
+average_income = data['income'].mean()
+average_order_amount = data['order_amount'].mean()
 
-mean_order_amount = data['order_amount'].mean()
-median_order_amount = data['order_amount'].median()
-mode_order_amount = data['order_amount'].mode()
+# Print the average income and order amount
+print(f"Average income: {average_income}")
+print(f"Average order amount: {average_order_amount}")
 
-plt.hist(data['order_amount'])
-plt.xlabel('Order Amount')
-plt.ylabel('Frequency')
-plt.title('Histogram of Order Amount')
+# Create a scatter plot of income vs order amount
+plt.scatter(data['income'], data['order_amount'])
+plt.xlabel('Income')
+plt.ylabel('Order Amount')
+plt.title('Income vs Order Amount')
 plt.show()
